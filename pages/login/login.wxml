@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="logo">
+    <image class="logo_image" src="../../static/logo-white.png" mode="widthFix" />
+  </view>
+  <view class="loginPane">
+    <van-cell-group>
+      <van-cell title="{{organization}}" is-link bind:click="popup" />
+      <van-popup custom-class="loginPane_popup" show="{{ isPopup }}" bind:close="closePopup" position="bottom">
+        <van-picker show-toolbar columns="{{ columns }}" bind:cancel="deptCancel" bind:confirm="deptConfirm"
+          bind:change="deptChange" />
+      </van-popup>
+      <van-field model:value="{{ username }}" placeholder="请输入姓名" />
+      <van-field model:value="{{ password }}" password placeholder="请输入口令（联系管理员领取）" />
+    </van-cell-group>
+    <van-button custom-class="btn-submit" type="primary" block bind:click="signup">开启恰饭之旅~</van-button>
+  </view>
+</view>

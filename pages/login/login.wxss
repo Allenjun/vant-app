@@ -1,0 +1,32 @@
+/* pages/login/login.wxss */
+.container {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+
+.logo_image {
+  width: 50vw;
+}
+
+.loginPane {
+  position: absolute;
+  width: 80vw;
+  top: 45vh;
+}
+
+.btn-submit {
+  margin-top: 20px;
+}
+
+.loginPane_popup {
+  height: 50vh;
+}

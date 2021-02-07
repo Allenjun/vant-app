@@ -1,0 +1,72 @@
+<!--pages/admin/admin.wxml-->
+<view class="container">
+  <van-dialog use-slot title="筛选" show="{{ dialogShow }}" show-cancel-button bind:close="onClose" zIndex="2"
+    bind:confirm="onConfirmDialog">
+    <van-cell is-link bind:click="openMarkTimeComponent">
+      <view slot="title">
+        <text class="selectItem_title">日期</text>
+        <text>{{markTimeFormat}}</text>
+      </view>
+    </van-cell>
+    <van-cell>
+      <view slot="title" class="selectItem">
+        <text class="selectItem_title">餐次</text>
+        <van-radio-group value="{{ type }}" bind:change="onChangeType" direction="horizontal">
+          <!-- <van-radio name="" checked-color="#07c160">全部</van-radio> -->
+          <van-radio name="lunch" checked-color="#07c160">午餐</van-radio>
+          <van-radio name="dinner" checked-color="#07c160">晚餐</van-radio>
+        </van-radio-group>
+      </view>
+    </van-cell>
+    <van-cell is-link bind:click="openDepartmentComponent">
+      <view slot="title">
+        <text class="selectItem_title">部门</text>
+        <text>{{department}}</text>
+      </view>
+    </van-cell>
+    <van-cell>
+      <view slot="title" class="selectItem">
+        <text class="selectItem_title">付款</text>
+        <van-radio-group value="{{ pay }}" bind:change="onChangePay" direction="horizontal">
+          <van-radio name="" checked-color="#07c160">全部</van-radio>
+          <van-radio name="{{true}}" checked-color="#07c160">已刷卡</van-radio>
+          <van-radio name="{{false}}" checked-color="#07c160">未刷卡</van-radio>
+        </van-radio-group>
+      </view>
+    </van-cell>
+    <van-cell>
+      <view slot="title" class="selectItem">
+        <text class="selectItem_title">领餐</text>
+        <van-radio-group value="{{ receive }}" bind:change="onChangeReceive" direction="horizontal">
+          <van-radio name="" checked-color="#07c160">全部</van-radio>
+          <van-radio name="{{true}}" checked-color="#07c160">已领餐</van-radio>
+          <van-radio name="{{false}}" checked-color="#07c160">未领餐</van-radio>
+        </van-radio-group>
+      </view>
+    </van-cell>
+  </van-dialog>
+  <van-popup custom-class="loginPane_popup" show="{{ departmentComponentShow }}" bind:close="onCloseDepartment"
+    position="bottom">
+    <van-picker show-toolbar columns="{{ columns }}" bind:cancel="deptCancel" bind:confirm="deptConfirm"
+      bind:change="onDeptChange" />
+  </van-popup>
+  <van-calendar show="{{ markTimeComponentShow }}" show-title="{{false}}" bind:close="onCloseCalendar"
+    bind:confirm="onConfirmCalendar" />
+  <!-- 主页面开始 -->
+  <van-cell-group class="order_list">
+    <van-cell title="报餐总数：{{ordercount}} 份" />
+    <van-cell wx:for="{{orderlist}}">
+      <view slot="title" class="order_item">
+        <view class="order_item_title">
+          <text>{{item.department}} | </text>
+          <text>{{item.name}} | </text>
+          <text>{{item.count}} 份</text>
+        </view>
+        <van-tag wx:if="{{item.pay}}" type="success">已刷卡</van-tag>
+        <van-button wx:elif="{{!item.pay}}" size="mini" type="danger" data-index='{{index}}' bind:click="confirmPay">
+          确认刷卡</van-button>
+      </view>
+    </van-cell>
+  </van-cell-group>
+  <van-button class="order_select" block type="danger" round bindtap="openDialog">筛选</van-button>
+</view>

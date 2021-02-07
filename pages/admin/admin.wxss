@@ -1,0 +1,31 @@
+/* pages/admin/admin.wxss */
+.container {
+  /* justify-items: center; */
+}
+
+.selectItem {
+  display: flex;
+  align-items: center;
+}
+
+.selectItem_title {
+  margin-right: 20px;
+}
+
+.order_list::after {
+  content: '';
+  display: block;
+  height: 60px;
+}
+
+.order_select {
+  position: fixed;
+  bottom: 10px;
+  width: 90vw;
+  align-self: center;
+}
+
+.order_item {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,16 @@
+/**index.wxss**/
+.meal_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meal_item_title {
+  margin-right: 15px;
+}
+
+.van-calendar__footer {
+  position: fixed;
+  bottom: 30rpx;
+  width: 90vw;
+}

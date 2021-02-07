@@ -1,0 +1,17 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <view class="userinfo-avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view>{{name}}</view>
+  </view>
+  <van-cell-group class="item_group">
+    <van-cell icon="" title="菜单查询" is-link bindtap="" />
+  </van-cell-group>
+  <van-cell-group class="item_group">
+    <van-cell wx:if="{{isAdmin === 1}}" icon="" title="报餐统计" is-link bindtap="toAdmin" />
+    <van-cell wx:if="{{isAdmin === 1}}" icon="" title="菜单编辑" is-link bindtap="" />
+  </van-cell-group>
+
+</view>
